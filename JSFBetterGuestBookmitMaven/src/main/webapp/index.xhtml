@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <!-- This h:head is necessary so JavaScript and CSS can be added by PrimeFaces. -->
+    <h:head><title>Guestbook</title></h:head>
+    <h:body>
+        <!-- A growl adds a cool messages object to the page. -->
+        <p:growl id="growl" globalOnly="true" />
+
+        <!-- Render a 'user-registration' form if there is no current user set. -->
+        <p:outputPanel rendered="#{sessionBean.currentUser == null}">
+            <h:form>
+                <h:outputLabel value="Username: " for="usernameTxt" />
+                <p:inputText id="usernameTxt" value="#{userBean.newUser.username}" />
+                <p:message for="usernameTxt" />
+                <p:commandButton value="Neues Gast"
+                                 action="#{userBean.createUser()}" update="@all" />
+            </h:form>
+        </p:outputPanel>
+
+        <!-- Only render the actual 'guestbook' part if there is a current user set in the sessionbean. -->
+        <p:outputPanel rendered="#{sessionBean.currentUser != null}">
+            <h1>Guestbook</h1>
+            <h:form>
+                <p:inputTextarea rows="5" cols="87" id="post" value="#{postBean.newPost.text}" />
+                <p:message for="post" />
+                <p:commandButton value="Senden" action="#{postBean.createPost()}"
+                                 update=":posts, :growl" /><br/><br/>
+                <h:form>
+                </h:form>
+            </h:form>
+            <p:outputPanel id="posts">
+                <p:dataTable value="#{sessionBean.currentUser.posts}" var="post"
+                             sortBy="#{post.date}">
+                    <p:column headerText="Date">
+                        <h:outputText value="#{post.date}">
+                            <f:convertDateTime />
+                        </h:outputText>
+                    </p:column>
+                    <p:column headerText="Text">
+                        <h:outputText value="#{post.text}" />
+                    </p:column>
+                </p:dataTable>
+            </p:outputPanel>
+        </p:outputPanel>
+    </h:body>
+</html>

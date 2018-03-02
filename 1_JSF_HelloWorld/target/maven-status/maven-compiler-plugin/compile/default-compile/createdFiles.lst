@@ -1,0 +1,6 @@
+HelloBeanForNoneScoped.class
+HelloBeanForViewScoped.class
+HelloBeanForRequestScoped.class
+HelloBeanForApplicationScoped.class
+HelloBeanForSessionScoped.class
+HelloBean.class

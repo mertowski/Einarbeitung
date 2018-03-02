@@ -1,0 +1,7 @@
+beans\PostBean.class
+domain\Post.class
+service\PostManager.class
+beans\SessionBean.class
+beans\SaveUser.class
+domain\User.class
+beans\UserBean.class
