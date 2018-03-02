@@ -8,8 +8,6 @@ import javax.faces.bean.SessionScoped;
 
 import java.io.Serializable;
 
-@ManagedBean
-@SessionScoped
 public class PageController implements Serializable {
 
     private static final long serialVersionUID = 1L;
