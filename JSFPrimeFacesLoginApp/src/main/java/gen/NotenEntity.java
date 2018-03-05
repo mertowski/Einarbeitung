@@ -9,15 +9,15 @@ import javax.persistence.Basic;
 import javax.persistence.Column;
 
 @Entity
-@Table(name = "`LoginApp`", schema = "db", catalog = "LoginAppDB")
+@Table(name = "Noten", schema = "dbo", catalog = "LoginAppDB")
 public class NotenEntity {
 
-	@Id
-	@GeneratedValue
-	private Integer id;
 
 	private double note;
+
+	@Id
 	private String matriculationNumber;
+
 	private String studentName;
 	private String lecture;
 
@@ -43,7 +43,7 @@ public class NotenEntity {
 	}
 
 	@Basic
-	@Column(name = "[Matrikulationsnummer]")
+	@Column(name = "[matriculationNumber]")
 	public String getMatriculationNumber() {
 		return matriculationNumber;
 	}
@@ -53,7 +53,7 @@ public class NotenEntity {
 	}
 
 	@Basic
-	@Column(name = "[Studentname]")
+	@Column(name = "[studentName]")
 	public String getStudentName() {
 		return studentName;
 	}
@@ -63,7 +63,7 @@ public class NotenEntity {
 	}
 
 	@Basic
-	@Column(name = "[Fach]")
+	@Column(name = "[Lecture]")
 	public String getLecture() {
 		return lecture;
 	}
