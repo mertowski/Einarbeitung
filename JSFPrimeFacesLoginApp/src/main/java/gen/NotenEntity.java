@@ -1,73 +1,84 @@
 package gen;
 
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import javax.persistence.Basic;
 import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
 
 @Entity
 @Table(name = "`LoginApp`", schema = "db", catalog = "LoginAppDB")
 public class NotenEntity {
 
-    private double note;
-    private String matriculationNumber;
-    private String studentName;
-    private String lecture;
+	@Id
+	@GeneratedValue
+	private Integer id;
 
-    public NotenEntity(double note, String matriculationNumber, String studentName, String lecture) {
-        this.note = note;
-        this.matriculationNumber = matriculationNumber;
-        this.studentName = studentName;
-        this.lecture = lecture;
-    }
+	private double note;
+	private String matriculationNumber;
+	private String studentName;
+	private String lecture;
 
-    @Basic
-    @Column(name = "[Note]")
-    public double getNote() {
-        return note;
-    }
+	public NotenEntity(double note, String matriculationNumber, String studentName, String lecture) {
+		this.note = note;
+		this.matriculationNumber = matriculationNumber;
+		this.studentName = studentName;
+		this.lecture = lecture;
+	}
 
-    public void setNote(double note) {
-        this.note = note;
-    }
+	public NotenEntity() {
+		super();
+	}
 
-    @Basic
-    @Column(name = "[Matrikulationsnummer]")
-    public String getMatriculationNumber() {
-        return matriculationNumber;
-    }
+	@Basic
+	@Column(name = "[Note]")
+	public double getNote() {
+		return note;
+	}
 
-    public void setMatriculationNumber(String matriculationNumber) {
-        this.matriculationNumber = matriculationNumber;
-    }
+	public void setNote(double note) {
+		this.note = note;
+	}
 
-    @Basic
-    @Column(name = "[Studentname]")
-    public String getStudentName() {
-        return studentName;
-    }
+	@Basic
+	@Column(name = "[Matrikulationsnummer]")
+	public String getMatriculationNumber() {
+		return matriculationNumber;
+	}
 
-    public void setStudentName(String studentName) {
-        this.studentName = studentName;
-    }
+	public void setMatriculationNumber(String matriculationNumber) {
+		this.matriculationNumber = matriculationNumber;
+	}
 
-    @Basic
-    @Column(name = "[Fach]")
-    public String getLecture() {
-        return lecture;
-    }
+	@Basic
+	@Column(name = "[Studentname]")
+	public String getStudentName() {
+		return studentName;
+	}
 
-    public void setLecture(String lecture) {
-        this.lecture = lecture;
-    }
+	public void setStudentName(String studentName) {
+		this.studentName = studentName;
+	}
 
-    @Override
-    public String toString() {
-        return "NotenEntity{" +
-                "note=" + note +
-                ", matriculationNumber='" + matriculationNumber + '\'' +
-                ", studentName='" + studentName + '\'' +
-                ", lecture='" + lecture + '\'' +
-                '}';
-    }
+	@Basic
+	@Column(name = "[Fach]")
+	public String getLecture() {
+		return lecture;
+	}
+
+	public void setLecture(String lecture) {
+		this.lecture = lecture;
+	}
+
+	@Override
+	public String toString() {
+		return "NotenEntity{" +
+			"note=" + note +
+			", matriculationNumber='" + matriculationNumber + '\'' +
+			", studentName='" + studentName + '\'' +
+			", lecture='" + lecture + '\'' +
+			'}';
+	}
 }
