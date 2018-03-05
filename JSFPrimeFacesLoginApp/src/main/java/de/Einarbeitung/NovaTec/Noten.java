@@ -6,7 +6,6 @@ import javax.validation.constraints.DecimalMax;
 import javax.validation.constraints.Size;
 
 /**
- *
  * @author myu
  */
 @ManagedBean
