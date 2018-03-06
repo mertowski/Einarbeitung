@@ -6,14 +6,15 @@
    http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
     <persistence-unit name="LoginAppDB" transaction-type="RESOURCE_LOCAL">
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
-        <class>gen.NotenEntity</class>
-
+        <jta-data-source>java:/jdbc/LoginAppDB</jta-data-source>
+        <class>de.Einarbeitung.NovaTec.Noten</class>
         <properties>
             <property name="hibernate.dialect" value="org.hibernate.dialect.SQLServer2012Dialect"/>
-            <property name="hibernate.connection.url" value="jdbc:sqlserver:1433;database=LoginAppDB"/>
+            <property name="hibernate.connection.url" value="jdbc:sqlserver://localhost:1433;database=LoginAppDB"/>
             <property name="hibernate.connection.driver_class" value="com.microsoft.sqlserver.jdbc.SQLServerDriver"/>
             <property name="hibernate.default_schema" value="dbo"/>
             <property name="hibernate.show_sql" value="true"/>
         </properties>
     </persistence-unit>
 </persistence>
+

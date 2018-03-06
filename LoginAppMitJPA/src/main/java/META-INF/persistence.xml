@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.0" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
+    <persistence-unit name="loginApp" transaction-type="JTA">
+        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+        <jta-data-source>java:/jdbc/loginApp</jta-data-source>
+        <class>model.Student</class>
+        <class>controller.StudentController</class>
+        <properties>
+            <property name="hibernate.dialect" value="org.hibernate.dialect.SQLServer2012Dialect"/>
+            <property name="hibernate.connection.driver_class" value="com.microsoft.sqlserver.jdbc.SQLServerDriver"/>
+            <property name="hibernate.archive.autodetection" value="class, hbm"/>
+            <property name="hibernate.hbm2ddl.auto" value="validate" />
+            <property name="hibernate.show_sql" value="true" />
+            <property name="hibernate.connection.username" value="SA"/>
+            <property name="hibernate.connection.password" value="Mondschein1"/>
+        </properties>
+    </persistence-unit>
+</persistence>

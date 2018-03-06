@@ -8,7 +8,7 @@ import javax.faces.bean.SessionScoped;
 
 import java.io.Serializable;
 
-@ManagedBeans
+@ManagedBean
 @SessionScoped
 public class PageController implements Serializable {
 

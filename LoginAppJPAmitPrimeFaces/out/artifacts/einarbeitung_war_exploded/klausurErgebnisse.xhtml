@@ -1,0 +1,80 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<HTML xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+<f:view contentType="text/html">
+    <h:head>
+        <f:facet name="first">
+            <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+            <title>Login</title>
+        </f:facet>
+    </h:head>
+    <h:body>
+        <p:layout fullPage="true">
+            <p:layoutUnit position="north" size="100" resizable="true" closable="true" collapsible="true">
+                <h1 align="center">Universität-Informations-Portal</h1>
+            </p:layoutUnit>
+
+            <p:layoutUnit position="south" size="100" closable="true" collapsible="true">
+                <h3 align="center">Universität ABC</h3>
+            </p:layoutUnit>
+
+            <p:layoutUnit position="center">
+                <p:outputLabel style="text-align: center"><h3>Klausurergebnisse</h3></p:outputLabel>
+                <h:form id="myForm" style="text-align: right">
+                    <h:commandLink id="myCommand">
+                        <p:graphicImage id="grapImage" value="/resources/images/pdf.png" />
+                        <p:dataExporter id="dataExporter" type="pdf" target="tb1" fileName="noten" pageOnly="true" />
+                    </h:commandLink>
+
+
+                    <p:dataTable id="tb1" var="myTable" value="#{studentController.myList}" paginator="true" rows="5" >
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Fach" />
+                            </f:facet>
+                            <h:outputText value="#{myTable.lecture}" />
+                        </p:column>
+
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Matrikelnummer" />
+                            </f:facet>
+                            <h:outputText value="#{myTable.matriculationNumber}" />
+                        </p:column>
+
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Name" />
+                            </f:facet>
+                            <h:outputText value="#{myTable.name}" />
+                        </p:column>
+
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Note" />
+                            </f:facet>
+                            <h:outputText value="#{myTable.note}" />
+                        </p:column>
+
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Prüfungsdatum" />
+                            </f:facet>
+                            <h:outputText value="06.03.2018" />
+                        </p:column>
+                    </p:dataTable><br/>
+
+                </h:form>
+                <h:form style="text-align: center">
+                    <p:commandButton action="#{studentController.startPage}" value="Logout" /><br/><br/>
+                </h:form>
+
+            </p:layoutUnit>
+        </p:layout>
+    </h:body>
+</f:view>
+</HTML>

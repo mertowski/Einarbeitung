@@ -7,6 +7,9 @@ import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 
 /**
  * @author myu
@@ -16,15 +19,12 @@ import javax.faces.context.FacesContext;
 public class Login implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-
+	Noten noten = new Noten();
 	private String username;
 	private String passwort;
 	private String status;
 	private String validation;
 	private String searchLecture;
-
-	Noten noten = new Noten();
-
 	private List<Noten> myList = new ArrayList<>();
 
 	public String getUsername() {
@@ -98,7 +98,19 @@ public class Login implements Serializable {
 	}
 
 	public void createInformations() {
+		EntityManagerFactory emfactory = Persistence.createEntityManagerFactory( "LoginAppDB" );
+
+		EntityManager entitymanager = emfactory.createEntityManager( );
+		entitymanager.getTransaction( ).begin( );
+
 		myList.add(new Noten(noten.getNote(), noten.getMatriculationNumber(), noten.getStudentName(), noten.getLecture()));
+
+		entitymanager.persist(myList);
+		entitymanager.getTransaction( ).commit( );
+
+		entitymanager.close( );
+		emfactory.close( );
+
 	}
 
 	public void updateNote() {
