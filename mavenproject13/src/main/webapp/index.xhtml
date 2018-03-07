@@ -1,0 +1,36 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+    <f:view contentType="text/html">
+        <h:head>
+            <f:facet name="first">
+                <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+                <title>PrimeFaces</title>
+            </f:facet>
+        </h:head>
+
+        <h:body>
+            #{message.pojoName}
+            <p:dataTable var="message" value="#{message.messages}" rows="10"
+                         paginator="true"
+                         paginatorTemplate="#{msg['datatbl_pagTmpl']}"
+                         currentPageReportTemplate="#{msg['datatbl_pagRepTmpl']}"
+                         rowsPerPageTemplate="1,5,15">
+
+                <p:column headerText="Message">
+                    <h:outputText value="#{message}" />
+                </p:column>
+
+                <f:facet name="paginatorBottomRight">
+                    <p:commandButton type="button" icon="fa fa-cloud-upload" />
+                </f:facet>
+            </p:dataTable>
+        </h:body>
+
+    </f:view>
+</html>
+

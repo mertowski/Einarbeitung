@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="JPA_UniPortal:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="JPA_UniPortal-1.0-SNAPSHOT.war">
+      <element id="artifact" artifact-name="JPA_UniPortal:war exploded" />
+    </root>
+  </artifact>
+</component>

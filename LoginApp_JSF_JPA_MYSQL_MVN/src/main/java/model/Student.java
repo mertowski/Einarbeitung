@@ -1,11 +1,9 @@
 package model;
 
-import javax.persistence.*;
 import javax.validation.constraints.DecimalMax;
 import javax.validation.constraints.Size;
 
-@Entity
-@Table(name = "`Student`", schema = "dbo", catalog = "myDatabase")
+
 public class Student {
 
 	@Size(min = 3, max = 70)
@@ -13,7 +11,6 @@ public class Student {
 
 	private String semester;
 
-	@Id
 	@Size(min = 7, max = 7, message = "Matrikelnummer muss 7 Ziffer haben!")
 	private String matriculationNumber;
 
@@ -36,8 +33,6 @@ public class Student {
 	public Student(double note, String matriculationNumber, String name, String lecture) {
 	}
 
-	@Basic
-	@Column(name = "Name")
 	public String getName() {
 		return name;
 	}
@@ -54,8 +49,7 @@ public class Student {
 		this.semester = semester;
 	}
 
-	@Basic
-	@Column(name = "Matrikelnummer")
+
 	public String getMatriculationNumber() {
 		return matriculationNumber;
 	}
@@ -64,8 +58,6 @@ public class Student {
 		this.matriculationNumber = matriculationNumber;
 	}
 
-	@Basic
-	@Column(name = "Note")
 	public double getNote() {
 		return note;
 	}
@@ -74,8 +66,7 @@ public class Student {
 		this.note = note;
 	}
 
-	@Basic
-	@Column(name = "Fach")
+
 	public String getLecture() {
 		return lecture;
 	}
@@ -84,14 +75,5 @@ public class Student {
 		this.lecture = lecture;
 	}
 
-	@Override
-	public String toString() {
-		return "Student{" +
-			"name='" + name + '\'' +
-			", semester='" + semester + '\'' +
-			", matriculationNumber='" + matriculationNumber + '\'' +
-			", note=" + note +
-			", lecture='" + lecture + '\'' +
-			'}';
-	}
+
 }
