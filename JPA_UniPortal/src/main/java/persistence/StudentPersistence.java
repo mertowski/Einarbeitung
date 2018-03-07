@@ -9,7 +9,11 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
+
+import controller.StudentController;
 import model.Student;
+
+import java.util.List;
 
 /**
  *
@@ -18,12 +22,17 @@ import model.Student;
 @Stateless
 @Transactional
 public class StudentPersistence {
-    
+
     @PersistenceContext(unitName = "UniPortalDS")
     private EntityManager em;
-    
+
+    StudentController studentController = new StudentController();
+
     public Student getStudent() {
-        return (Student) em.createQuery("select st from Student st").getResultList().get(0);
+        /*if (studentController.getMyList() != null) {
+            for (int i = 0; i <= studentController.getMyList().size(); i++)*/
+               return (Student) em.createQuery("select st from Student st").getResultList().get(1);
     }
-    
+
 }
+
