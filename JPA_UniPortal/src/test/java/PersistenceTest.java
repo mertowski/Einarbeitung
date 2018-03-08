@@ -31,7 +31,7 @@ public class PersistenceTest {
     public void gen() {
         Student st = new Student();
         st.setMatriculationNumber("1234567");
-        st.setName("Mert");
+        st.setName("Merjlkjljlkjljt");
         st.setNote(2.5);
         st.setLecture("Verteilte Systeme");
         

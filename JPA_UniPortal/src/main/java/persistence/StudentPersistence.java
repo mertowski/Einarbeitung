@@ -5,34 +5,39 @@
  */
 package persistence;
 
+import model.Student;
+
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
-
-import controller.StudentController;
-import model.Student;
-
 import java.util.List;
 
+
 /**
- *
  * @author myu
  */
 @Stateless
 @Transactional
 public class StudentPersistence {
 
-    @PersistenceContext(unitName = "UniPortalDS")
-    private EntityManager em;
+	@PersistenceContext(unitName = "UniPortalDS")
+	private EntityManager em;
 
-    StudentController studentController = new StudentController();
+	public List<Student> getStudent() {
 
-    public Student getStudent() {
-        /*if (studentController.getMyList() != null) {
-            for (int i = 0; i <= studentController.getMyList().size(); i++)*/
-               return (Student) em.createQuery("select st from Student st").getResultList().get(1);
-    }
+		return (List<Student>) em.createNamedQuery("studentQuery").getResultList();
+
+	}
+
+	public void saveStudentPersistence(Student std) {
+		em.persist(std);
+
+	}
+
 
 }
+
+
+
 

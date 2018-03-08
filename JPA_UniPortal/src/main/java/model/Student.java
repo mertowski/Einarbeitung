@@ -5,87 +5,84 @@
  */
 package model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.DecimalMax;
 import javax.validation.constraints.Size;
 
 /**
- *
  * @author myu
  */
 
 @Entity
+@NamedQueries({@NamedQuery(name = "studentQuery", query = "select s from Student s")})
 public class Student {
-    
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
 
-    @Size(min = 3, max = 70)
-    private String name;
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private long id;
 
-    @Size(min = 7, max = 7, message = "Matrikelnummer muss 7 Ziffer haben!")
-    private String matriculationNumber;
+	@Size(min = 3, max = 70)
+	private String name;
 
-    @DecimalMax(value = "5.0", message = "Note muss zwischen 1.0 und 5.0 sein!")
-    private double note;
+	@Size(min = 7, max = 7, message = "Matrikelnummer muss 7 Ziffer haben!")
+	private String matriculationNumber;
 
-    private String lecture;
+	@DecimalMax(value = "5.0", message = "Note muss zwischen 1.0 und 5.0 sein!")
+	private double note;
 
-    public Student(String name, String matriculationNumber, double note, String lecture) {
-        this.name = name;
-        this.matriculationNumber = matriculationNumber;
-        this.note = note;
-        this.lecture = lecture;
-    }
+	private String lecture;
 
-    public Student() {
-    }
+	public Student(String name, String matriculationNumber, double note, String lecture) {
+		this.name = name;
+		this.matriculationNumber = matriculationNumber;
+		this.note = note;
+		this.lecture = lecture;
+	}
 
-    public Student(double note, String matriculationNumber, String name, String lecture) {
-    }
+	public Student() {
+	}
 
-    public String getName() {
-        return name;
-    }
+	public Student(double note, String matriculationNumber, String name, String lecture) {
+	}
 
-    public void setName(String name) {
-        this.name = name;
-    }
+	public String getName() {
+		return name;
+	}
 
-    public String getMatriculationNumber() {
-        return matriculationNumber;
-    }
+	public void setName(String name) {
+		this.name = name;
+	}
 
-    public void setMatriculationNumber(String matriculationNumber) {
-        this.matriculationNumber = matriculationNumber;
-    }
+	public String getMatriculationNumber() {
+		return matriculationNumber;
+	}
 
-    public double getNote() {
-        return note;
-    }
+	public void setMatriculationNumber(String matriculationNumber) {
+		this.matriculationNumber = matriculationNumber;
+	}
 
-    public void setNote(double note) {
-        this.note = note;
-    }
+	public double getNote() {
+		return note;
+	}
 
-    public String getLecture() {
-        return lecture;
-    }
+	public void setNote(double note) {
+		this.note = note;
+	}
 
-    public void setLecture(String lecture) {
-        this.lecture = lecture;
-    }
+	public String getLecture() {
+		return lecture;
+	}
 
-    public Long getId() {
-        return id;
-    }
+	public void setLecture(String lecture) {
+		this.lecture = lecture;
+	}
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
 
 }

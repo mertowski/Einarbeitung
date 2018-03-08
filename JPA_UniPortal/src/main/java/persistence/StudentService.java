@@ -7,38 +7,26 @@ package persistence;
 
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
+
 import model.Student;
 
+import java.util.List;
+
 /**
- *
  * @author myu
  */
 @Stateless
 public class StudentService {
-    
-    @EJB
-    StudentPersistence studentPersistence;
-    
-    public Student getFirstStudent() {
-        return studentPersistence.getStudent();
-    }
 
-    public String getStudentName() {
-        return studentPersistence.getStudent().getName();
-    }
+	@EJB
+	StudentPersistence studentPersistence;
 
-    public String getMatrikelNummer() {
-        return studentPersistence.getStudent().getMatriculationNumber();
-    }
+	public List<Student> getFirstStudent() {
+		return studentPersistence.getStudent();
+	}
 
-    public double getNote() {
-        return studentPersistence.getStudent().getNote();
-    }
+	public void saveStudents(Student std) {
+		studentPersistence.saveStudentPersistence(std);
+	}
 
-    public String getLecture() {
-        return studentPersistence.getStudent().getLecture();
-    }
-   
 }

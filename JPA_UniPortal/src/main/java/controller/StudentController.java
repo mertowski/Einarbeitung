@@ -5,24 +5,17 @@
  */
 package controller;
 
-import java.util.ArrayList;
-import java.util.List;
+import model.Student;
+import persistence.StudentService;
+
 import javax.ejb.EJB;
 import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
-import javax.persistence.Query;
-import javax.transaction.UserTransaction;
-
-import model.Student;
-import org.hibernate.resource.transaction.backend.jta.internal.JtaTransactionAdapterUserTransactionImpl;
-import persistence.StudentService;
+import java.util.ArrayList;
+import java.util.List;
 
 
 /**
- *
  * @author myu
  */
 @ManagedBean
@@ -62,13 +55,11 @@ public class StudentController {
 	}
 
 
-
 	public void createInformations() {
 
-		student = studentService.getFirstStudent();
-		myList.add(student);
-
-
+		//myList.add(student);
+		studentService.saveStudents(student);
+		myList = studentService.getFirstStudent();
 	}
 
 	public void updateNote() {
