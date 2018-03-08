@@ -21,7 +21,7 @@ public class StudentService {
 	@EJB
 	StudentPersistence studentPersistence;
 
-	public List<Student> getFirstStudent() {
+	public List<Student> getStudent() {
 		return studentPersistence.getStudent();
 	}
 

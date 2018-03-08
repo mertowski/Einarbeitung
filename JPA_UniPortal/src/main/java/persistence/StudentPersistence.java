@@ -31,8 +31,8 @@ public class StudentPersistence {
 	}
 
 	public void saveStudentPersistence(Student std) {
-		em.persist(std);
-
+		em.merge(std);
+		//em.persist(std);
 	}
 
 

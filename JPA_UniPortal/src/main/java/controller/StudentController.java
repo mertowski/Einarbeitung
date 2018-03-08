@@ -59,7 +59,7 @@ public class StudentController {
 
 		//myList.add(student);
 		studentService.saveStudents(student);
-		myList = studentService.getFirstStudent();
+		myList = studentService.getStudent();
 	}
 
 	public void updateNote() {
